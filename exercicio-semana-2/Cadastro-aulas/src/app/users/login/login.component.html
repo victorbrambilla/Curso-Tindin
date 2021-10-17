@@ -1,0 +1,9 @@
+<div class="container">
+    <h1>Tindin Class</h1>
+    <h2>Faça seu login</h2>
+    <input type="text" placeholder="Digite seu email " [(ngModel)]="request.user">
+    <input type="password" placeholder="Digite sua  senha" [(ngModel)]="request.password">
+    <button mat-raised-button color="primary" (click)="login()">Entrar</button>
+    <p>Novo no Tindin Class?<a routerLink="register" > Cadastrar</a></p>
+</div>
+

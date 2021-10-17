@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="title-left">
+        <h1>Tindin Class</h1>
+        <h2>Listagem das aulas cadastradas</h2>
+        
+    </div>
+
+</div>    
+
+<div class="container-edit" *ngIf="classes[0]">
+    <label>
+        Titulo: <br>
+        <input type="text" placeholder={{classes.title}} [(ngModel)]="classes[0].title">
+    </label> 
+    <label>
+        Descriçao da aula: <br>
+        <input type="text" placeholder={{classes.description}} [(ngModel)]="classes[0].description">
+    </label>
+
+    <div class="button">
+        <button mat-raised-button color="primary"(click)="update()">Atualizar</button>
+        <button mat-raised-button color="accent" (click)="delete()">Deletar</button>
+    </div>
+    
+</div>

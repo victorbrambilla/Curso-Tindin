@@ -1,0 +1,27 @@
+
+
+<div class="container">
+    <div class="title-left">
+        <h1>Tindin Class</h1>
+        <h2>listagem das aulas cadastradas</h2>
+        <h3 >{{(responseUsers.length)}} registros encontrados</h3>
+    </div>
+
+    <div class="button-right">
+        <button mat-raised-button color="primary" routerLink="/users/create">Nova aula</button>
+    </div>
+</div>
+
+<div class="container-items">
+    <div  *ngFor="let i of responseUsers">
+        <div class="item">
+            <h2>{{i.title}}</h2>
+            <p>{{i.description}}</p>
+            
+            <button mat-raised-button color="primary" routerLink="/users/update/{{i.id}}">Editar</button>
+        </div> 
+    </div>
+    
+</div>
+
+    
