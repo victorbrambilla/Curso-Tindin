@@ -1,5 +1,4 @@
-# Aula2
-
+<h1>Cadastro De Aulas</h2>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
 
 ## Development server
