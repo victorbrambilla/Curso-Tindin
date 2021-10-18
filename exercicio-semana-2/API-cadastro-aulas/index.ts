@@ -8,18 +8,19 @@ dotenv.config()
 const app = express()
 app.use(express.json())
 app.use(cors())
-const PORT = 3000
+const PORT = 4000
 
 app.use(express.static('www'))
-
+//aulas
 app.get('/notes', note.list)
 app.get('/notes/:id', note.get)
 app.post('/notes', note.create)
 app.put('/notes', note.update)
 app.delete('/notes/:id', note.remove)
 
-app.get('/login', note.search)
-app.post('/login', note.createUser)
+//login
+app.get('/users', note.search)
+app.post('/users', note.createUser)
 
 
 app.listen(PORT, () => {

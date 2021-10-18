@@ -48,7 +48,7 @@ export class UpdateComponent implements OnInit {
       this.idDelete=data,
 
       this.userService.deleteUser(this.idDelete[0].id).subscribe(res=>{
-        alert('item Removido com sucesso')
+        alert('Item removido com sucesso')
         this._route.navigate(['/users'])
       },
       erro=>{

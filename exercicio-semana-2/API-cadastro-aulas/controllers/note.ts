@@ -79,7 +79,7 @@ const remove = async (req: Request<any>, res: Response<any>) => {
 
 const search = async (req: Request<any>, res: Response<any>) => {
     try {
-        const login = await note.search(res)
+        const login = await note.search()
         return res.json(login)
     } catch (err: any) {
         return error(res, err)

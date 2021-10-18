@@ -12,7 +12,7 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  private url = "http://localhost:3000"
+  private url = "http://localhost:4000"
 
   constructor(private http: HttpClient) { }
 
@@ -41,11 +41,11 @@ export class UserService {
   //login
 
   public getLogin(): Observable<ResponseUsers>{
-    return this.http.get<ResponseUsers>(`${this.url}/login`);
+    return this.http.get<ResponseUsers>(`${this.url}/users`);
   }
   
   public createLogin(request: ResponseLogin): Observable<any>{
-    return this.http.post<any>(`${this.url}/login`, request);
+    return this.http.post<any>(`${this.url}/users`, request);
   }
 
 }

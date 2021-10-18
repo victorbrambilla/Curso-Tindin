@@ -77,8 +77,9 @@ const remove = async (id: string) => {
 
 //login
 
-const search = async (res:any) => {
-    res.json(users)
+const search = async () => {
+    const result = await db.execute('select * from users')
+    return result.rowns
 }
 
 const createUser = async (login: ILogin) => {
@@ -90,14 +91,10 @@ const createUser = async (login: ILogin) => {
         throw new Error("Informe o campo senha!")
     }
 
-    for (const user of users){
-        if(login.user === user.user && login.password === user.password ){
-            throw new Error("Cadastro existente")
-        }
-    }
-
-    users.push(login) 
     
+
+    await db.execute('insert into users (user, password) values (?, ?)', [login.user, login.password])
+
 
     return true
   

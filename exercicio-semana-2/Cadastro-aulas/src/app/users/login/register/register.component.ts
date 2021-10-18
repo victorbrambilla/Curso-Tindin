@@ -31,6 +31,14 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
+
+    for (const i of this.responseUsers){
+      console.log(i)
+      if(i.user===this.request.user && i.password==this.request.password ){
+        return alert("Cadastro existente")
+      }
+    }
+
     this.userService.createLogin(this.request).subscribe(data=>{
       alert("Criado com sucesso")
       this._route.navigate([''])
