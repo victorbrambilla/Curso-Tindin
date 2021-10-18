@@ -18,13 +18,13 @@ CREATE TABLE notes (
   PRIMARY KEY (`id`));
 
 ```
-
+```
 CREATE TABLE users (
   `id` INT NOT NULL AUTO_INCREMENT,
   `user` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`));
-
+```
 <hr>
 
 <h1>Rotas</h1>
