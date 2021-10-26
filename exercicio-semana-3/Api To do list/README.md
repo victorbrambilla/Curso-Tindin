@@ -9,7 +9,6 @@ API rodando em http://localhost:4000
 npm start
 ~~~
 
-# db
 
 <h1>Rotas</h1>
 <hr>
