@@ -39,13 +39,13 @@ Criar->POST
  {"title":"Título" , "description": "descrição"}
 ~~~
 
-Listar->PUT
+Editar->PUT
   Rota: /notes
 ~~~Terminal
  {"id": 1, "title": "Título", "description": "descrição"}
 ~~~
 
-Listar->DELETE
+Apagar->DELETE
   Rota: /notes
   ~~~Terminal
  {"id": 1}
