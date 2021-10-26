@@ -23,24 +23,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    if(!this.request.email){
-      return alert("Digite seu email2!")
-    }
-    if(!this.request.password){
-      return alert("Digite sua senha!")
-    }
+    
 
     this.userService.getLogin(this.request)
-    .subscribe((data)=>{console.log(data)},  
-    erro=>{
-      if(erro.status==400){
-        alert(erro.error.message)
-      }
-    }
-  )
-
-
-
     }
 
 

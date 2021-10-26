@@ -1,0 +1,22 @@
+header{
+  height: 100px;
+  background-color: #69f0ae;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 2px 0px;
+  padding: 0 10px;
+}
+
+.logo img{
+  width: 100px;
+  
+}
+
+a{
+  cursor: pointer;
+}
+
+.none{
+  width: 24px;
+}

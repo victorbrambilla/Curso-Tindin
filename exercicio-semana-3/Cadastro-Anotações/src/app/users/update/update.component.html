@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="title-left">
+        <h1>Tindin</h1>
+        <h2>Editar anotações cadastradas</h2>
+
+    </div>
+    <div class="button-right">
+        <button mat-raised-button color="primary" routerLink="/users">Voltar</button>
+    </div>
+</div>    
+
+<div class="container-edit" *ngIf="classes">
+    <label>
+        Titulo: <br>
+        <input type="text" placeholder={{classes.title}} [(ngModel)]="classes.title">
+    </label> 
+    <label>
+        Descriçao da anotaçâo: <br>
+        <input type="text" placeholder={{classes.description}} [(ngModel)]="classes.description">
+    </label>
+
+    <div class="button">
+        <button mat-raised-button color="accent"(click)="update()">Atualizar</button>
+        <button mat-raised-button color="warn" (click)="delete()">Deletar</button>
+
+    </div>
+    
+</div>

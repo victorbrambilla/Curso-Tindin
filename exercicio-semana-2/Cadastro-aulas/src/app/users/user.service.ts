@@ -40,8 +40,8 @@ export class UserService {
 
   //login
 
-  public getLogin(): Observable<ResponseUsers>{
-    return this.http.get<ResponseUsers>(`${this.url}/users`);
+  public getLogin(request: ResponseLogin): Observable<any>{
+    return this.http.post<any>(`${this.url}/login`, request);
   }
   
   public createLogin(request: ResponseLogin): Observable<any>{

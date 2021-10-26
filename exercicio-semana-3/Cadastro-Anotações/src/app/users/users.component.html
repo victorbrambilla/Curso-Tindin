@@ -1,0 +1,74 @@
+<main>
+    <div class="container">
+        <div class="title-left">
+            <h1>Olá {{getName()}}!</h1>
+            <h2>Listagem das anotações cadastradas</h2>
+            <h3 >Você tem {{(responseUsers.length)}} anotações encontradas</h3>
+        </div>
+        
+        <div class="button-right">
+            <button mat-raised-button color="primary" routerLink="/users/create">Nova anotaçâo <i class="material-icons">add</i></button>
+        </div>
+    </div>
+    
+    <div class="container-items" *ngIf="responseUsers.length>0">
+        <div class="container-items-bg">
+            <h1>A fazer </h1>
+            <div  *ngFor="let i of responseUsers">
+                <div *ngIf="i.status==='toDo'" class="item item1">
+                    <h2 class="title1">{{i.title}}</h2>
+                    <p>{{i.description}}</p>
+                    
+                    <button mat-raised-button color="primary" routerLink="/users/update/{{i._id}}">Editar</button>
+                    <button mat-raised-button color="accent" (click)="Start(i._id, i.title, i.description, i.status )">Começar</button>
+                    
+                </div> 
+            </div>
+        </div>
+        
+        <div class="container-items-bg">
+            <h1>Em andamento</h1>
+            <div  *ngFor="let i of responseUsers">
+                <div *ngIf="i.status==='active'" class="item item2">
+                    <h2 class="title2">{{i.title}}</h2>
+                    <p>{{i.description}}</p>
+                    
+                    <button mat-raised-button color="primary" routerLink="/users/update/{{i._id}}">Editar</button>
+                    <button mat-raised-button color="accent" (click)="Completed(i._id, i.title, i.description, i.status )" >Completar</button>
+                </div> 
+            </div>
+        </div>
+        <div class="container-items-bg">
+            <h1>Completadas</h1>
+            <div  *ngFor="let i of responseUsers">
+                <div *ngIf="i.status==='completed'" class="item item3">
+                    <h2 class="title3">{{i.title}}</h2>
+                    <p>{{i.description}}</p>
+                    
+                    <button mat-raised-button color="primary" routerLink="/users/update/{{i._id}}">Editar</button>
+                    <button mat-raised-button color="accent" (click)="Delete(i._id)" >Excluir</button>
+
+                </div> 
+            </div>
+        </div>
+         
+ 
+    </div>
+    
+</main>
+
+
+
+<footer *ngIf="responseUsers.length>0">
+    
+  <mat-paginator
+    (page)="handlePageEvent($event)"
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    [pageIndex]="pageIndex"
+    aria-label="Select page">
+
+</mat-paginator>
+</footer>
+    

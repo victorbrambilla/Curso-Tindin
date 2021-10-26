@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="title-left">
+        <h1>Tindin </h1>
+        <h2>Cadastro de anotações</h2>        
+    </div>
+    <div class="button-right">
+        <button mat-raised-button color="primary" routerLink="/users">Voltar</button>
+    </div>
+</div>    
+
+<div class="container-create">
+    <label>
+        Titulo:
+        <input  type="text" placeholder="Insira o títuto" [(ngModel)]="request.title">
+    </label>
+    <label>
+        Titulo:
+        <input type="text" placeholder="Insira a descriçao" [(ngModel)]="request.description">
+    </label>
+    <br>
+    <div class="button">
+        <button mat-raised-button color="accent" (click)="save()">Criar</button>
+    </div>
+     
+</div>
+
+

@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   responseUsers: any=[];
 
   request: ResponseLogin={
+    name:'',
     email:'',
     password: ''
   }
@@ -24,22 +25,13 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
-
-    for (const i of this.responseUsers){
-      console.log(i)
-      if(i.user===this.request.email && i.password==this.request.password ){
-        return alert("Cadastro existente")
-      }
+    if(!this.request.password){
+      return alert("digite sua senha!")
     }
 
     this.userService.createLogin(this.request).subscribe(data=>{
-      alert("Criado com sucesso")
+      alert("Cadastro criado com sucesso")
       this._route.navigate([''])
-    },
-    erro=>{
-      if(erro.status==400){
-        alert(erro.error.message)
-      }
     }
     )
       

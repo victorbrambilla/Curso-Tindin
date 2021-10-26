@@ -7,18 +7,26 @@ export interface ResponseUsers {
 export interface RequestCreate {
     title: string;
     description: string;
+    status:string
 }
 
 export interface ResponseUpdate {
     title: string;
     description: string;
-    id?: number;
+    _id?: string;
 }
 
 export interface ResponseLogin {
+    name?:string,
     email: string;
-    password: string | number;
+    password: string;
 }
 
 
 
+export interface updateNote{
+    id:string,
+    title:string,
+    description:string,
+    status:string
+  }

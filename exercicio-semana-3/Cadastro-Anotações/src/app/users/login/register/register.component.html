@@ -1,6 +1,7 @@
 <div class="container">
-    <h1>Tindin Class</h1>
+    <h1>Tindin</h1>
     <h2>Faça seu cadastro</h2>
+    <input type="text" placeholder="Digite seu nome" [(ngModel)]="request.name" >
     <input type="email" placeholder="Digite seu email" [(ngModel)]="request.email" >
     <input type="password" placeholder="Digite sua  senha" [(ngModel)]="request.password" >
     <button mat-raised-button color="primary" (click)="register()">Cadastrar</button>
