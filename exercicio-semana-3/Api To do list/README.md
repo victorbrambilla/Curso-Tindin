@@ -39,7 +39,7 @@ Criar->POST
 ~~~
 
 Editar->PUT
-  Rota: /notes
+  Rota: /notes/id
 ~~~Terminal
  {"id": 1, "title": "Título", "description": "descrição"}
 ~~~
