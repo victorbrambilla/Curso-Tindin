@@ -2,7 +2,7 @@
 <h1>Como Rodar</h1>
 <hr>
 
-1-Rodar a API -> https://github.com/victorbrambilla/Curso-Tindin/tree/master/exercicio-semana-2/API-cadastro-aulas
+1-Rodar a API -> https://github.com/victorbrambilla/Curso-Tindin/tree/master/exercicio-semana-3/Api%20To%20do%20list
 
 2- Clonar ESTE repositório para sua máquina local
 
