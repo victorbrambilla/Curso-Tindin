@@ -15,12 +15,14 @@ const login = async (user: IUser) => {
    
     await connect()
     const userLogged= await User.findOne({email:user.email})
-    const userName= userLogged.name
+   
 
 
     if(!userLogged){
         throw new Error("Cadastro não encontrado")
     }
+
+    const userName= userLogged.name
 
     if(bcrypt.compareSync(user.password, userLogged.password)==false){
         throw new Error("Senha incorreta!")
