@@ -51,3 +51,10 @@
   .button{
     margin:20px auto;
   }
+
+  span{
+    font-size: 18px;
+    margin-right: 5px;
+    text-align: center;
+    
+}
