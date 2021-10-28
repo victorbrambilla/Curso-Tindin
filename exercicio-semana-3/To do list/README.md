@@ -20,7 +20,7 @@ http://localhost:4200
 <hr>
 
 <h2>-login</h2>
-![login](https://user-images.githubusercontent.com/88890771/139325955-25efea87-57d9-4a65-b515-f53d88ab5fd8.png)
+(https://user-images.githubusercontent.com/88890771/139325955-25efea87-57d9-4a65-b515-f53d88ab5fd8.png
 <br>
 
 <h2>-Cadastro</h2>
