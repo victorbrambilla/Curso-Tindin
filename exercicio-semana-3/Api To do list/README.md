@@ -9,7 +9,6 @@ API rodando em http://localhost:4000
 npm start
 ~~~
 
-# db
 
 <h1>Rotas</h1>
 <hr>
@@ -39,13 +38,13 @@ Criar->POST
  {"title":"Título" , "description": "descrição"}
 ~~~
 
-Listar->PUT
-  Rota: /notes
+Editar->PUT
+  Rota: /notes/id
 ~~~Terminal
  {"id": 1, "title": "Título", "description": "descrição"}
 ~~~
 
-Listar->DELETE
+Apagar->DELETE
   Rota: /notes
   ~~~Terminal
  {"id": 1}
