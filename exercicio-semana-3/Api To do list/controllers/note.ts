@@ -3,14 +3,18 @@ import * as note from '../services/note'
 import { error } from '../libs/bindError'
 
 const list = async (req: Request<any>, res: Response<any>) => {
-    try {
-        const {_id: userId} = req.user
-        const {page, perPage} =req.query
-        const notes = await note.list(userId, Number(page), Number(perPage))
-        return res.json(notes)
-    } catch (err: any) {
-        return error(res, err)
-    }
+    setTimeout(async()=>{
+        try {
+            const {_id: userId} = req.user
+            const {page, perPage} =req.query
+            const notes = await note.list(userId, Number(page), Number(perPage))
+            return res.json(notes)
+        } catch (err: any) {
+            return error(res, err)
+        }
+
+    },1000)
+    
 }
 
 const get = async (req: Request<any>, res: Response<any>) => {

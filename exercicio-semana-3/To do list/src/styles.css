@@ -21,3 +21,8 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     display: none !important;
     background-color: white;
 }
+
+input:focus{
+    outline-color: #7b1fa2;
+}
+ 

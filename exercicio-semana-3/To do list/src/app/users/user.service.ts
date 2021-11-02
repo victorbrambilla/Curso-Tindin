@@ -1,7 +1,7 @@
 import {HttpHeaders } from '@angular/common/http';
 
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 import { RequestCreate, ResponseLogin, ResponseUpdate, ResponseUsers } from './user.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -79,5 +79,9 @@ export class UserService {
 
     return true;
   }
+
+  //loader
+  public isLoading: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+
 
 }

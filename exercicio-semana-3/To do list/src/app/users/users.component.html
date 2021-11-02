@@ -10,8 +10,13 @@
             <button mat-raised-button color="primary" routerLink="/users/create">Nova anotaçâo <i class="material-icons">add</i></button>
         </div>
     </div>
+
+    <div *ngIf="userService.isLoading | async" class="loader-container">
+        <mat-progress-spinner  mode="indeterminate"></mat-progress-spinner>
+    </div>
     
     <div class="container-items" *ngIf="responseUsers.length>0">
+        
         <div class="container-items-bg">
             <h1>A fazer </h1>
             <div  *ngFor="let i of responseUsers">

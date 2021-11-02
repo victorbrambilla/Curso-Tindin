@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {MatButtonModule} from '@angular/material/button';
@@ -18,7 +18,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { CreateNoteComponent } from './users/create-note/create-note.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { AuthInterceptor } from './users/http-interceptors/auth-interceptor';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -42,9 +43,10 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatInputModule,
     MatPaginatorModule,
     MatExpansionModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatFormFieldModule
   ],
-  providers: [httpInterceptorProviders],
+  providers: [httpInterceptorProviders,{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

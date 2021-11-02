@@ -14,7 +14,7 @@ export class  UsersComponent implements OnInit {
 
   responseUsers: any=[];
   
-  constructor(private userService: UserService) { }
+  constructor(public userService: UserService ) { }
 
   ngOnInit(): void {
     this.userService.getNotes(this.pageSize)

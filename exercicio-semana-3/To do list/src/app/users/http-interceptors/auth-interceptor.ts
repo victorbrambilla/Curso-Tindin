@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpErrorResponse } from '@angular/common/http';
 import { throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, finalize } from 'rxjs/operators';
 import { UserService } from '../user.service';
 
 @Injectable()
@@ -15,6 +15,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
     const token = this.userService.getAuthorizationToken();
     let request: HttpRequest<any> = req;
+    this.userService.isLoading.next(true)
 
     if (token){
       // O request é imutavel, ou seja, não é possível mudar nada
@@ -30,6 +31,9 @@ export class AuthInterceptor implements HttpInterceptor {
     // retorno o request com o erro tratado
     return next.handle(request)
       .pipe(
+        finalize(()=>{
+          this.userService.isLoading.next(false)
+        }),
         catchError(this.handleError)
       );
   }
