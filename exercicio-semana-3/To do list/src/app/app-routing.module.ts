@@ -15,9 +15,9 @@ const routes: Routes = [
     path: '',
     component: HomeComponent,
     children: [
-      { path: '', component: UsersComponent },
-      { path: 'users/create', component: CreateNoteComponent },
-      { path: 'users/update/:id', component: UpdateComponent },
+      { path: '', component: UsersComponent,data: {depth: 1} },
+      { path: 'users/create', component: CreateNoteComponent, data: {depth: 2}},
+      { path: 'users/update/:id', component: UpdateComponent, data: {depth: 2} },
     ],
     canActivate: [AuthGuard]
   },
@@ -27,8 +27,8 @@ const routes: Routes = [
     component: AuthenticationComponent,
     children: [
       { path: '', redirectTo: 'login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'login/register', component: RegisterComponent },
+      { path: 'login', component: LoginComponent,data: {depth: 1} },
+      { path: 'login/register', component: RegisterComponent,data: {depth: 2} },
       
     ]
   },

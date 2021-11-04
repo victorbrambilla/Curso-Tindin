@@ -11,8 +11,9 @@
     
 </header>
 <main>
-  
-  <router-outlet></router-outlet>
+  <div class="route-container" [@routeAnimation]="getDepth(myOutlet)">
+    <router-outlet #myOutlet="outlet"></router-outlet>
+</div>
 </main>
  
 
