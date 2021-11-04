@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   responseUsers: any=[];
 
   request: ResponseLogin={
-    email:'',
+    user:'',
     password: ''
   }
 
@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
 
     for (const i of this.responseUsers){
       console.log(i)
-      if(i.user===this.request.email && i.password==this.request.password ){
+      if(i.user===this.request.user && i.password==this.request.password ){
         return alert("Cadastro existente")
       }
     }

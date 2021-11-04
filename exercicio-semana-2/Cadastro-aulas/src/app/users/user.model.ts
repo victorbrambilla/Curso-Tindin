@@ -16,7 +16,8 @@ export interface ResponseUpdate {
 }
 
 export interface ResponseLogin {
-    email: string;
+    user?: string,
+    email?: string;
     password: string | number;
 }
 
