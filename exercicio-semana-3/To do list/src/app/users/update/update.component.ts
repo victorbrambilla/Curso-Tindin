@@ -12,7 +12,7 @@ export class UpdateComponent implements OnInit {
 
   
   id: any
-  classes:any=[];
+  notes:any=[];
   idDelete:any=[]
   
  
@@ -24,7 +24,7 @@ export class UpdateComponent implements OnInit {
   ngOnInit(): void {
     this.id=this.route.snapshot.paramMap.get('id')
     this.userService.getNote(this.id).subscribe(data=>{
-      this.classes=data
+      this.notes=data
     
     });
   }
@@ -36,9 +36,9 @@ export class UpdateComponent implements OnInit {
 
     const Iupdate:any={
 
-      id:this.classes._id,
-      title:this.classes.title,
-      description:this.classes.description
+      id:this.notes._id,
+      title:this.notes.title,
+      description:this.notes.description
     }
 
     

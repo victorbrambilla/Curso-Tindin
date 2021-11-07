@@ -9,14 +9,14 @@
     </div>
 </div>    
 
-<div class="container-edit" *ngIf="classes">
+<div class="container-edit" *ngIf="notes">
     <label>
         Titulo: <br>
-        <input type="text" placeholder={{classes.title}} [(ngModel)]="classes.title">
+        <input type="text" placeholder={{notes.title}} [(ngModel)]="notes.title">
     </label> 
     <label>
         Descriçao da anotaçâo: <br>
-        <input type="text" placeholder={{classes.description}} [(ngModel)]="classes.description">
+        <input type="text" placeholder={{notes.description}} [(ngModel)]="notes.description">
     </label>
 
     <div class="button">
