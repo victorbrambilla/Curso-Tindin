@@ -52,7 +52,7 @@ export class  UsersComponent implements OnInit {
   }
 
   Start(id:any, title:any, description:any, status:any ){
-    const note:updateNote={
+    const note:updateNote = {
       id:id,
       title:title,
       description:description,
