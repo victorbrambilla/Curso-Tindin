@@ -13,7 +13,7 @@ export class UpdateComponent implements OnInit {
   
   id: any
   notes:any=[];
-  idDelete:any=[]
+  
   
  
 
@@ -52,19 +52,16 @@ export class UpdateComponent implements OnInit {
   }
   
   delete(){
-    this.id=this.route.snapshot.paramMap.get('id')
-    this.userService.getNote(this.id).subscribe(data=>{
-      this.idDelete=data,
-      
-      this.userService.deleteNote(this.idDelete._id).subscribe(res=>{
+
+      this.userService.deleteNote(this.notes._id).subscribe(res=>{
         alert('Item removido com sucesso')
         this._route.navigate(['/users'])
       }
       )
-    });
+    };
 
 
     
   }
 
-}
+
