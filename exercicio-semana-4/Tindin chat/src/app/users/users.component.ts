@@ -18,7 +18,7 @@ export class  UsersComponent implements OnInit {
     name:this.user,
     user: this.avatar,
     message:'',
-    date: {},
+    
     file:File
   }
 
@@ -51,14 +51,17 @@ export class  UsersComponent implements OnInit {
     this.userService.sendUser(this.users)
     console.log(this.messageList)
     
-    setTimeout(()=>{
-      const ul= document.querySelector('.list-messages')
-      ul!.scrollTop=ul!.scrollHeight
-    },500)
-
+    this.scroll()
      
   }
   
+  scroll(){
+    setTimeout(()=>{
+      const ul= document.querySelector('.list-messages')
+      ul!.scrollTop=ul!.scrollHeight
+    },100)
+
+  }
 
 
 
@@ -67,7 +70,7 @@ export class  UsersComponent implements OnInit {
     this.newMessage.date=this.userService.getDateTime(new Date())
     this.userService.sendMessage(this.newMessage);
     this.newMessage.message = '';
-     
+    this.scroll() 
   }
   
   
@@ -77,7 +80,6 @@ export class  UsersComponent implements OnInit {
   onFileSelected(event:any){
     
     this.newMessage.file=event.target.files[0];
-    this.newMessage.date=this.userService.getDateTime(new Date())
 
     this.userService.postPhoto(this.newMessage).subscribe()
     this.newMessage.message = '';

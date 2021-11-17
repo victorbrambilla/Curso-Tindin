@@ -58,34 +58,7 @@ export class UserService {
     }
 
     
-    getDateTime(date: any) {
-      let today = new Date()
-      let currentDay = today.getDate();
-      let currentMonth = today.getMonth() + 1;
-      let currentYear = today.getFullYear();
-  
-      date = new Date(date)
-      let userDay = date.getDate();
-      let userMonth = date.getMonth() + 1;
-      let userYear = date.getFullYear();
-  
-      let dayMessage
-  
-      if (userDay == currentDay && userMonth == currentMonth && userYear == currentYear) {
-        dayMessage = 'hoje'
-      } else if (userDay == currentDay - 1 && userMonth == currentMonth && userYear == currentYear) {
-        dayMessage = 'ontem'
-      } else {
-        dayMessage = `${userDay}/${userMonth}/${userYear}`
-      }
-  
-      let time = {
-        hour: date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
-        msg: dayMessage
-      }
-  
-      return time
-    }
+    
  
 
 
@@ -121,7 +94,6 @@ export class UserService {
     formData.append("name", message.name)
     formData.append("user", message.user)
     formData.append("message", message.message)
-    formData.append("date", message.date)
     formData.append("foto", message.file)
     return this.http.post<any>(`${this.url}/photo`, formData)
     
@@ -150,6 +122,33 @@ export class UserService {
     return true;
   }
 
+  getDateTime(date: any) {
+    let today = new Date()
+    let currentDay = today.getDate();
+    let currentMonth = today.getMonth() + 1;
+    let currentYear = today.getFullYear();
 
+    date = new Date(date)
+    let userDay = date.getDate();
+    let userMonth = date.getMonth() + 1;
+    let userYear = date.getFullYear();
+
+    let dayMessage
+
+    if (userDay == currentDay && userMonth == currentMonth && userYear == currentYear) {
+      dayMessage = 'hoje'
+    } else if (userDay == currentDay - 1 && userMonth == currentMonth && userYear == currentYear) {
+      dayMessage = 'ontem'
+    } else {
+      dayMessage = `${userDay}/${userMonth}/${userYear}`
+    }
+
+    let time = {
+      hour: date.getHours() + ':' + date.getMinutes() + ':' + date.getSeconds(),
+      msg: dayMessage
+    }
+
+    return time
+  }
 
 }

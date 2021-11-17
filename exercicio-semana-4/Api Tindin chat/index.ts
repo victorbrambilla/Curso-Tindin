@@ -2,10 +2,12 @@ import * as dotenv from 'dotenv'
 
 import express from 'express'
 import cors from 'cors'
+import getDateTime from './date'
 import * as user from './controllers/user'
 import { isLogged } from './libs/middlewareLogin' 
 import upload from './upload'
 import path from 'path'
+
 
 dotenv.config()
 
@@ -35,7 +37,7 @@ app.post('/photo',isLogged, upload.single('foto'), (req:any, res:any)=>{
       name:req.body.name,
       user:req.body.user,
       message:req.body.message,
-      date:req.body.date,
+      date:getDateTime(new Date()),
       img:`http://localhost:3000/public/${req.file.filename}`
     }
     messages.push({message})
@@ -73,6 +75,10 @@ io.on('connection', (socket: any) => {
     io.emit('join', users)
     io.emit('message', messages);
   })
+
+  
+
+
 
 
 });
