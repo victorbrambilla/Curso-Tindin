@@ -25,7 +25,7 @@ main{
     flex: 1;
     padding: 30px;
     border-radius: 15px;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 .message{
     margin: 10px 0;
@@ -107,11 +107,11 @@ main{
     width: 150px;
 }
 .list-users{
+    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
-    overflow-y: hidden;
+    overflow-y: auto;
     
 }
 .list-users h4{
@@ -137,10 +137,13 @@ main{
         height: 100%
     }
     .container-user{
-        margin-top: 10px;
+        
+        margin: 10px 0;
         width: 100%;
     }
     .list-users{
+        max-height: 500px;
+        overflow-y: scroll;
         display: block;
     }
     .users{

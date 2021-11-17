@@ -32,7 +32,7 @@ app.post('/users', upload.single('avatar'), user.register)
 
 app.post('/photo',isLogged, upload.single('foto'), (req:any, res:any)=>{
   try {
-    res.send('enviado '+req.file.filename)
+    
     const message={
       name:req.body.name,
       user:req.body.user,
@@ -44,7 +44,7 @@ app.post('/photo',isLogged, upload.single('foto'), (req:any, res:any)=>{
     io.emit('message', messages);
     
   } catch (error) {
-    console.log('error')
+    throw new Error('error')
   }
 })
 

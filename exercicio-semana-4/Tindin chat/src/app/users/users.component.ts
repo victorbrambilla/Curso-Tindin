@@ -33,12 +33,13 @@ export class  UsersComponent implements OnInit {
   constructor(public userService: UserService ) { }
 
   ngOnInit(): void {
-    
+    this.scroll()
+     
 
     this.userService.getNewMessage().subscribe((message: string) => {
       this.messageList.splice(0, this.messageList.length)
       this.messageList.push(message);
-      
+      this.scroll() 
       
     })
 
@@ -49,10 +50,9 @@ export class  UsersComponent implements OnInit {
     })
 
     this.userService.sendUser(this.users)
-    console.log(this.messageList)
     
-    this.scroll()
-     
+    
+    
   }
   
   scroll(){
@@ -66,11 +66,14 @@ export class  UsersComponent implements OnInit {
 
 
   sendMessage() {
+    if(this.newMessage.message!=''){
+      this.newMessage.date=this.userService.getDateTime(new Date())
+      this.userService.sendMessage(this.newMessage);
+      this.newMessage.message = '';
+      this.scroll() 
+    }
     
-    this.newMessage.date=this.userService.getDateTime(new Date())
-    this.userService.sendMessage(this.newMessage);
-    this.newMessage.message = '';
-    this.scroll() 
+    
   }
   
   
@@ -81,11 +84,14 @@ export class  UsersComponent implements OnInit {
     
     this.newMessage.file=event.target.files[0];
 
-    this.userService.postPhoto(this.newMessage).subscribe()
+    this.userService.postPhoto(this.newMessage).subscribe(res=>{
+      
+    })
     this.newMessage.message = '';
     setTimeout(()=>{
       location.reload()
     },500)
+     
 }
 
 }

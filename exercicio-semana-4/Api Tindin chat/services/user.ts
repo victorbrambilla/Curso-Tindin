@@ -72,18 +72,9 @@ const register = async (user: createUser) => {
   
 }
 
-const getById = async (_id:string) => {
-    await connect()
-    return User.findById(_id)
-
-    
-  
-}
-
 
 
 export {
    login,
-   getById,
    register
 }
