@@ -30,7 +30,6 @@ export class UserService {
 
   socket = io(this.url);
 
-  
     public sendMessage(message:any) {
       this.socket.emit('message', message);
     }
@@ -70,9 +69,9 @@ export class UserService {
       
       var name = JSON.parse(JSON.stringify(data)).userName
       var avatar = this.url+'/'+JSON.parse(JSON.stringify(data)).avatar
-      localStorage.setItem("token", token)
-      localStorage.setItem("name", name)
-      localStorage.setItem("avatar", avatar)
+      sessionStorage.setItem("token", token)
+      sessionStorage.setItem("name", name)
+      sessionStorage.setItem("avatar", avatar)
       this._route.navigate(['/users'])
     })
   }
@@ -95,21 +94,24 @@ export class UserService {
     formData.append("user", message.user)
     formData.append("message", message.message)
     formData.append("foto", message.file)
-    return this.http.post<any>(`${this.url}/photo`, formData)
+    return this.http.post<any>(`${this.url}/photo`, formData, {
+      reportProgress: true,
+      observe: 'events'
+    })
     
   }
   
 
   public getAuthorizationToken() {
-    const token = localStorage.getItem("token");
+    const token = sessionStorage.getItem("token");
     return token;
   }
 
   
   public removeToken(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('name');
-    localStorage.removeItem('avatar');
+    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('avatar');
   }
 
   
