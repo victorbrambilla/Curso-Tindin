@@ -15,29 +15,39 @@ export class UserService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
+  public notes$: BehaviorSubject<any> = new BehaviorSubject('');
+
   private url = "http://localhost:4000"
 
   constructor(private http: HttpClient, private route: ActivatedRoute, private _route: Router) { }
 
-  public getNotes(page:any): Observable<ResponseUsers>{
-    return this.http.get<ResponseUsers>(`${this.url}/notes?page=1&perPage=${page}`);
-  }
+  public getNotes(page:any){
+     this.http.get(`${this.url}/notes?page=1&perPage=${page}`).subscribe((data)=>{
+       this.notes$.next(data)
+     })
+    
+    return this.notes$.asObservable()
+     
+   }
 
 
   public createNote(request: ResponseUsers): Observable<RequestCreate>{
+    this.getNotes(10)
     return this.http.post<RequestCreate>(`${this.url}/notes`, request);
   }
 
   public getNote(id: number): Observable<ResponseUsers>{
-     
+    this.getNotes(10)
     return this.http.get<ResponseUsers>(`${this.url}/notes/${id}`);
   }
 
   public updateNote(request:ResponseUpdate ):Observable<any>{
+    this.getNotes(10)
     return this.http.put<any>(`${this.url}/notes`, request);
   }
 
   public deleteNote(id:any):Observable<any>{
+    this.getNotes(10)
     return this.http.delete<any>(`${this.url}/notes`, {body: {id}});
   }
 

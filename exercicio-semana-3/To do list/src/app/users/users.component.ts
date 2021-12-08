@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from './user.service';
 import {PageEvent} from '@angular/material/paginator';
 import { updateNote } from './user.model';
+import { Subscription } from 'rxjs/internal/Subscription';
+import { interval, Observable } from 'rxjs';
 
 
 
@@ -10,19 +12,41 @@ import { updateNote } from './user.model';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class  UsersComponent implements OnInit {
+export class  UsersComponent implements OnInit , OnDestroy{
+  subscription: Subscription
 
+  notes: Observable<string[]>
   responseUsers: any=[];
   
   constructor(public userService: UserService ) { }
-
-  ngOnInit(): void {
-    this.userService.getNotes(this.pageSize)
-    .subscribe((data)=>{this.responseUsers= data, console.log(data)}
-    
-    )
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
   
+  
+
+  ngOnInit() {
+      //this.subscription= interval().subscribe(()=>{
+       // let notes:any
+       // notes=this.userService.getNotes(this.pageSize)
+       // this.responseUsers=notes.source._value
+       // console.log(this.responseUsers)
+      //})
+
+
+   this.subscription= this.userService.getNotes(this.pageSize).subscribe((data)=>{
+     this.responseUsers=data
+   })
+    
+   // this.reload()
+     
+  }
+  
+  reload= async ()=>{
+    this.subscription= await this.userService.getNotes(this.pageSize).subscribe((data)=>{
+      this.responseUsers=data
+    })
+  }
   
   
 
@@ -59,7 +83,7 @@ export class  UsersComponent implements OnInit {
       status:"active"
     }
     this.userService.updateNote(note).subscribe(res=>{
-      location.reload()
+      
       
     }
     )
@@ -72,18 +96,17 @@ export class  UsersComponent implements OnInit {
       description:description,
       status:"completed"
     }
-    console.log(note)
     
     this.userService.updateNote(note).subscribe(res=>{
-      location.reload()
+    
       
     }
     )
   }
 
   Delete(id:string){
-      this.userService.deleteNote(id).subscribe(res=>{
-        location.reload()
+      this.userService.deleteNote(id).subscribe(data=>{
+       
       }
       )
   }
